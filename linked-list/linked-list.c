@@ -6,8 +6,18 @@ typedef struct Node {
     struct Node* next;
 } node_t;
 
-// Inserts a node at the end of list
+// add new elements at the beginning
+void unshift(struct Node **head_ref, int value) {
+	
+	node_t *new_node = (node_t *)malloc(sizeof(node_t));
+	new_node -> data = value;
+	new_node -> next = *head_ref;
+	*head_ref = new_node;
+}
+
+// add new elements at the end
 void push(node_t **head_ref, int value) {
+
     node_t *new_node = (node_t *)malloc(sizeof(node_t));
     new_node -> data = value;
     new_node -> next = NULL;
@@ -38,7 +48,8 @@ int main() {
     push(&head, 10); 
     push(&head, 20); 
     push(&head, 30); 
-    push(&head, 40); 
+    push(&head, 40);
+    unshift(&head, 0); 
     print(head);
     printf("\n");
     return 0;
