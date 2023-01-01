@@ -1,47 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct Node
-{
+typedef struct Node {
     int data;
     struct Node* next;
 } node_t;
 
-
-
-void push(node_t **head_ref, int value) 
-{
+// Inserts a node at the end of list
+void push(node_t **head_ref, int value) {
     node_t *new_node = (node_t *)malloc(sizeof(node_t));
     new_node -> data = value;
     new_node -> next = NULL;
     
-    if(*head_ref == NULL) 
-    {
+    if(*head_ref == NULL) {
         *head_ref = new_node; 
         return;
     }
    
     node_t *temp = *head_ref;
-    while(temp -> next != NULL)
-    {
+    while(temp -> next != NULL) {
         temp = temp -> next; 
     }
     temp -> next = new_node; 
 }
 
-void print(node_t *head)
-{
+void print(node_t *head) {
     if(head == NULL) printf("List is empty.");
     node_t *temp = head;
-    while(temp != NULL)
-    {
+    while(temp != NULL) {
        printf("%d ", temp -> data);
        temp = temp -> next; 
     }
 }
 
-int main() 
-{
+int main() {
     node_t *head = NULL;
     push(&head, 10); 
     push(&head, 20); 
